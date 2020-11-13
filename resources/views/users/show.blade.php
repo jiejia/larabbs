@@ -5,12 +5,12 @@
     <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
       <div class="card ">
         <img class="card-img-top" src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png">
- <div class="card-body">
-        <h5><strong>个人简介</strong></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-        <hr>
-        <h5><strong>注册于</strong></h5>
-        <p>January 01 1901</p>
+      <div class="card-body">
+       <h5><strong>个人简介</strong></h5>
+       <p>{{ $user->introduction }}</p>
+       <hr>
+       <h5><strong>注册于</strong></h5>
+       <p>{{ $user->created_at->diffForHumans() }}</p>
       </div>
     </div>
   </div>
