@@ -8,10 +8,14 @@
     <div class="card ">
       <div class="card-header bg-transparent">
         <ul class="nav nav-pills">
-          <li class="nav-item"><a class="nav-link active" href="#">最后回复</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">最新发布</a></li>
+            <li class="nav-item">
+              <a class="nav-link {{ active_class( ! if_query('order', 'recent')) }}" href="{{ Request::url() }}?order=">最后回复</a>
+            </li>
+           <li class="nav-item">
+            <a class="nav-link {{ active_class(if_query('order', 'recent')) }}" href="{{ Request::url() }}?order=recent" >最新发布</a>
+           </li>
         </ul>
-      </div>
+     </div>
       <div class="card-body">
         {{-- 话题列表 --}}
         @include('topics._topic_list', ['topics' => $topics])
