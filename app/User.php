@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use App\Models\Topic;
+use App\Models\Reply;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -62,5 +63,10 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function isAuthorOf($model)
     {
         return $this->id == $model->user_id;
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }
