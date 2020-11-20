@@ -11,6 +11,9 @@
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   @yield('styles')
+  @if (app()->isLocal())
+    @include('sudosu::user-selector')
+  @endif
 </head>
 <body>
 <div id="app" class="{{ route_class() }}-page">
