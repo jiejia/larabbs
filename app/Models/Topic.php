@@ -67,4 +67,16 @@ class Topic extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    /**
+     * @version  2020-11-20 15:18
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
+     */
+    public function updateReplyCount()
+    {
+        $this->reply_count = $this->replies->count();
+
+        $this->save();
+    }
 }

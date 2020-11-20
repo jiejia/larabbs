@@ -14,6 +14,14 @@ class RepliesController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @param ReplyRequest $request
+     * @param Reply $reply
+     * @return \Illuminate\Http\RedirectResponse
+     * @version  2020-11-20 15:10
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
+     */
     public function store(ReplyRequest $request, Reply $reply)
     {
         $reply->content = $request->post('content');
@@ -23,10 +31,19 @@ class RepliesController extends Controller
         return redirect()->to($reply->topic->link())->with('success', '评论创建成功！');
     }
 
+    /**
+     * @param Reply $reply
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @version  2020-11-20 15:10
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
+     */
 	public function destroy(Reply $reply)
 	{
         $this->authorize('destroy', $reply);
         $reply->delete();
-        return redirect()->route('replies.index')->with('success', '评论删除成功！');
+
+        return redirect()->to($reply->topic->link())->with('success', '评论删除成功！');
 	}
 }

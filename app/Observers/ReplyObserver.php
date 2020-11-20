@@ -29,4 +29,15 @@ class ReplyObserver
 
         $reply->topic->user->notify(new TopicReplied($reply));
     }
+
+    /**
+     * @param Reply $reply
+     * @version  2020-11-20 15:15
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
+     */
+    public function deleted(Reply $reply)
+    {
+        $reply->topic->updateReplyCount();
+    }
 }

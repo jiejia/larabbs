@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Topic;
 use App\Jobs\TranslateSlug;
+use Illuminate\Support\Facades\DB;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -39,5 +40,18 @@ class TopicObserver
             // 推送任务到队列
             dispatch(new TranslateSlug($topic));
         }
+    }
+
+    /**
+     * 连带删除回复
+     *
+     * @param Topic $topic
+     * @version  2020-11-20 15:19
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
+     */
+    public function deleted(Topic $topic)
+    {
+        DB::table('replies')->where('topic_id', $topic->id)->delete();
     }
 }
