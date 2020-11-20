@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Reply;
 
-class TopicReplied extends Notification
+class TopicReplied extends Notification  implements ShouldQueue
 {
     use Queueable;
 
@@ -32,21 +32,23 @@ class TopicReplied extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @param $notifiable
+     * @return MailMessage
+     * @version  2020-11-20 14:51
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
      */
     public function toMail($notifiable)
     {
+        $url = $this->reply->topic->link(['#reply' . $this->reply->id]);
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('你的话题有新回复！')
+            ->action('查看回复', $url);
     }
 
     /**
@@ -62,6 +64,13 @@ class TopicReplied extends Notification
         ];
     }
 
+    /**
+     * @param $notification
+     * @return array
+     * @version  2020-11-20 14:51
+     * @author   jiejia <jiejia2009@gmail.com>
+     * @license  PHP Version 7.2.9
+     */
     public function toDatabase($notification)
     {
         $topic = $this->reply->topic;
