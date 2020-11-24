@@ -26,11 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
 	{
-		\App\User::observe(\App\Observers\UserObserver::class);
-		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+        \App\User::observe(\App\Observers\UserObserver::class);
         \App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
+        \App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+        \App\Models\Link::observe(\App\Observers\LinkObserver::class);
 
-        //
+        // Carbon 中文化配置
         \Carbon\Carbon::setLocale('zh');
     }
 }
