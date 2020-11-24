@@ -63,7 +63,8 @@ return [
             // 设置表单条目的类型，默认的 type 是 input
             'type' => 'image',
             // 图片上传必须设置图片存放路径
-            'location' => public_path() . '/uploads/images/avatars/',
+            //'location' => public_path() . '/uploads/images/avatars/',
+            'location' => public_path()
         ],
         'roles' => [
             'title' => '用户角色',

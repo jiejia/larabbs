@@ -10,10 +10,13 @@ use App\Models\Topic;
 use App\Models\Reply;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Traits\ActiveUserHelper;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use MustVerifyEmailTrait;
+
+    use ActiveUserHelper;
 
     use HasRoles;
 
