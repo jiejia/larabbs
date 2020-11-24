@@ -104,7 +104,7 @@ return array(
      *
      * @type string
      */
-    'home_page' => 'users',
+    'home_page' => 'topics',
 
     /*
      * The route to which the user will be taken when they click the "back to site" button
@@ -118,7 +118,7 @@ return array(
      *
      * @type string
      */
-    'login_path' => 'login',
+    'login_path' => 'permission-denied',
 
     /*
      * The logout path is the path where Administrator will send the user when they click the logout link
@@ -150,4 +150,7 @@ return array(
     'locales' => [],
 
     'custom_routes_file' => app_path('Http/routes/administrator.php'),
+
+    // 当选项 `permission` 权限检测不通过时，会重定向用户到此处设置的路径
+
 );
