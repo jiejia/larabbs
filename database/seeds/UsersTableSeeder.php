@@ -16,8 +16,8 @@ class UsersTableSeeder extends Seeder
         $faker = app(Faker\Generator::class);
         // 头像假数据
         $avatars = [
-            '/uploads/images/avatars/202011/16/11_1605525981_8Hb7Erc5zb.jpg',
-            '/uploads/images/avatars/202011/17/11_1605543494_SlAUOwdQCL.jpg',
+            '/uploads/images/avatars/202011/18/1_1605712679_bBLLvXzqhy.jpg',
+            '/uploads/images/avatars/202011/18/1_1605712679_bBLLvXzqhy.jpg',
 
         ];
 
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'jiejia';
         $user->email = 'jiejia2009@gmail.com';
-       // $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+       // $user->avatar = '/uploads/images/avatars/202011/18/1_1605712679_bBLLvXzqhy.jpg';
         $user->save();
 
         // 初始化用户角色，将 1 号用户指派为『站长』
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(2);
         $user->name = 'zoe';
         $user->email = '314728819@qq.com';
-        // $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        // $user->avatar = '/uploads/images/avatars/202011/18/1_1605712679_bBLLvXzqhy.jpg';
         $user->save();
 
         $user->assignRole('Maintainer');
