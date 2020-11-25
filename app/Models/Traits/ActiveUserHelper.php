@@ -27,6 +27,7 @@ trait ActiveUserHelper
 
     protected $cache_expire_in_minutes = 65;
 
+
     public function getActiveUsers()
     {
         // 尝试从缓存中取出 cache_key 对应的数据。如果能取到，便直接返回数据。

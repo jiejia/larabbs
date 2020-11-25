@@ -11,12 +11,15 @@ use App\Models\Reply;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActivedAtHelper;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use MustVerifyEmailTrait;
 
     use ActiveUserHelper;
+
+    use LastActivedAtHelper;
 
     use HasRoles;
 
