@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'prefix' => env('API_PREFIX', null),
+    'prefix' => env('API_PREFIX', 'api'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'domain' => env('API_DOMAIN', 'api.larabbs.test'),
+    'domain' => env('API_DOMAIN', 'larabbs.test'),
 
     /*
     |--------------------------------------------------------------------------
